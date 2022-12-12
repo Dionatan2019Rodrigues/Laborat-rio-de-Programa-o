@@ -7,3 +7,5 @@
 $ gcc -Wall -o exemplo exemplo.c tela.c -lallegro_font -lallegro_color -lallegro_ttf -lallegro_primitives -lallegro 
 ```
 - `T3` Jogo em que o usuário deve matar as palavras que o jogo apresenta, digitando-as. Exemplos([typing attack](https://www.typinggames.zone/typingattack) ou [falling words](https://www.typingstudy.com/pt-brazilian_abnt-2/games/falling_words)).**INCOMPLETO**
+
+## 2º Semestre (2022)
