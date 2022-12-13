@@ -22,7 +22,7 @@ $ g++ -Wall -std=c++11 -o calc calculadora.cpp
 ```
 $ g++ -Wall -std=c++11 arvore.cpp  
 ```
-- `T6` Dado um conjunto de números para inserção em uma ABB AVL, complete as funções do trabalho para verificação com TDD(Test Driven Development) com o framework C++ [Catch2](https://github.com/catchorg/Catch2/tree/v2.x).
+- `T6` Dado um conjunto de números para inserção em uma ABB AVL, foram desenvolvidas funções para verificação com TDD(Test Driven Development) com o framework C++ [Catch2](https://github.com/catchorg/Catch2/tree/v2.x).
 ```
 $ g++ -Wall -std=c++11 arvore.cpp 
 ```
