@@ -18,5 +18,11 @@ Trabalhos desenvolvidos em Linguagem C++.
 ```
 $ g++ -Wall -std=c++11 -o calc calculadora.cpp 
 ```
-- `T5`
-- `T6`
+- `T5` Dado um conjunto de números de uma árvore binária de busca(ABB) em percurso pré-ordem, o objetivo deste trabalho é encontrar o percurso pós-ordem da ABB.
+```
+$ g++ -Wall -std=c++11 arvore.cpp  
+```
+- `T6` Dado um conjunto de números para inserção em uma ABB AVL, complete as funções do trabalho para verificação com TDD(Test Driven Development) com o framework C++ [Catch2](https://github.com/catchorg/Catch2/tree/v2.x).
+```
+$ g++ -Wall -std=c++11 arvore.cpp 
+```
