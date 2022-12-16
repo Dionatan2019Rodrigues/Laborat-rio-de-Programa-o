@@ -10,7 +10,7 @@ using namespace std;
 //#include "catch.hpp"
 
 template<typename T>
-
+ 
 struct Calculadora {
 
     // ver http://en.cppreference.com/w/cpp/container/stack
@@ -48,7 +48,7 @@ struct Calculadora {
                                 break;
                             case '*':
                                 operando(y*x);
-                                //std::cout <<"PILHA" <<operandos.top() << std::endl;
+                                //std::cout <<"PILHA " <<operandos.top() << std::endl;
                                 //std::cout << y << "*" << x << std::endl;
                                 break;
                             case '/':
@@ -124,6 +124,7 @@ struct Calculadora {
     }
 
     void formula(std::string form){
+        //std::cout << "Calculando: "<<form << std::endl;
         int acm=0; //significa número sem sinal
         bool N = false;
         bool fecha = false;
@@ -232,7 +233,8 @@ struct Calculadora {
 
 struct Celula {
   std::string formula;
-  int valor;
+  //int valor;
+  bool calculado = false;
 };
 
 std::map<std::string, Celula> *ptr;
@@ -250,13 +252,13 @@ struct Planilha {
     std::string value(std::string form){
         for(auto it= ptr->begin(); it != ptr->end(); it++){
             if(form == "("+it->first+")"){
-                //std::cout << "("+it->first+")" << std::endl;
+                //std::cout << "v_";
                 //std::cout << it->second.formula << std::endl;
                 if(it->second.formula[0] == '='){
                     std::string c = it->second.formula.substr(1,it->second.formula.length()-1);
                     return "("+c+")";
                 }
-                return "("+it->second.formula+")";
+                return  it->second.formula;
             }
             //std::cout << "("+it->first+")" << std::endl;
             //std::cout << form << std::endl << std::endl;
@@ -271,17 +273,21 @@ struct Planilha {
 
         for(long unsigned int i=0;i<form.length();i++){
             if(std::isalpha(form[i])){
-                //std::cout << "entre: " ;
+                //std::cout << "entre:__   " << std::endl ;
                 if(std::isdigit(form[i+2])){
                    //std::cout << "antes: ";// << std::endl;
                    std::string a = tratamento(("("+(form.substr(i,i+2)))+")");
                    form.replace(i,i+2, a);
-                   i+=4;
                    //std::cout << "depois: " << form << std::endl;
-                }else{
+                   i+=a.length();
+                   
+                }else{  
+                    //  std::cout << i << "" << form << std::endl;
                     std::string a = tratamento(("("+(form.substr(i,i+1)))+")");
+                    
+
                     form.replace(i,i+1, a);
-                    i+=3;
+                    i+=a.length();
                     
                 }
             }
@@ -291,9 +297,14 @@ struct Planilha {
     }
 
     void resolve(){
+      
+
         for(auto it= celulas.begin(); it != celulas.end(); it++){
+            //std::cout << "ver: " << std::endl;
             if(it->second.formula[0] == '='){
-                //std::cout << "ver: " ;
+                if(it->first == "A3")
+                    continue;
+
                 std::string b = it->second.formula.substr(1,it->second.formula.length()-1);
                 //std::cout << "olhar :  " << b << std::endl;
                 it->second.formula = tratamento("("+b+")");
@@ -303,11 +314,18 @@ struct Planilha {
                 //std::cout << it->first << "    igual   " << it->second.formula << std::endl << std::endl;
                 // return 0;
                 calc.formula(it->second.formula);
-                //std::cout << calc.resultado() << std::endl;
-                it->second.formula = (calc.resultado()+'0');
+                //std::cout << std::endl << calc.resultado() << std::endl;
+                it->second.formula = std::to_string(calc.resultado());
+                it->second.calculado = true;
                 //std::cout << it->second.formula << std::endl;
             }
         }
+        std::string b = celulas["A3"].formula.substr(1,celulas["A3"].formula.length()-1);
+                //std::cout << "olhar :  " << b << std::endl;
+                celulas["A3"].formula = tratamento("("+b+")");
+                calc.formula(celulas["A3"].formula);
+                celulas["A3"].formula = std::to_string(calc.resultado());
+                celulas["A3"].calculado = true;
     }
 
     void imprime(){
@@ -334,9 +352,11 @@ int main (){
         excel.leitura(id,form);
                
     }
+    
+    //std::cout << "tratado  " << std::endl;
     excel.resolve();
 
-    //std::cout << "tratado  " << trato << std::endl;
+    //std::cout << "tratado  " << std::endl;
     excel.imprime();
 
 
