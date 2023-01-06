@@ -16,7 +16,7 @@ Trabalhos desenvolvidos em Linguagem C++.
 - `T3` Simula aportes e resgates em um plano de previdência simplificado.
 - `T4` Implementação de uma planilha de números inteiros que suporta referências a outras células e operações aritméticas. Uma célula pode ter um valor `int` ou uma fórmula matemática iniciando com `=`.
 ```
-$ g++ -Wall -std=c++11 -o calc calculadora.cpp 
+$ g++ -Wall -std=c++11 calculadora.cpp 
 ```
 - `T5` Dado um conjunto de números de uma árvore binária de busca(ABB) em percurso pré-ordem, o objetivo deste trabalho é encontrar o percurso pós-ordem da ABB.
 ```
@@ -25,4 +25,10 @@ $ g++ -Wall -std=c++11 arvore.cpp
 - `T6` Dado um conjunto de números para inserção em uma ABB AVL, foram desenvolvidas funções para verificação com TDD(Test Driven Development) com o framework C++ [Catch2](https://github.com/catchorg/Catch2/tree/v2.x).
 ```
 $ g++ -Wall -std=c++11 arvore.cpp 
+```
+- `T7`  Este trabalho consiste na implementação de caminhos mínimos com o algoritmo de
+Dijkstra (ver [aqui](https://www.ime.usp.br/~pf/analise_de_algoritmos/aulas/dijkstra.html) e [aqui](https://www.freecodecamp.org/news/dijkstras-shortest-path-algorithm-visual-introduction/)) em um grafo não-direcionado, com pesos nas arestas, com listas de
+adjacência. Foram desenvolvidas funções para verificação com TDD(Test Driven Development) com o framework C++ [Catch2](https://github.com/catchorg/Catch2/tree/v2.x).
+```
+$ g++ -Wall -std=c++11 dijkstra.cpp  
 ```
