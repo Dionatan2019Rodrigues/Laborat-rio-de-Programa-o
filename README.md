@@ -27,7 +27,7 @@ $ g++ -Wall -std=c++11 arvore.cpp
 $ g++ -Wall -std=c++11 arvore.cpp 
 ```
 - `T7`  Este trabalho consiste na implementação de caminhos mínimos com o algoritmo de
-Dijkstra (ver [aqui](https://www.ime.usp.br/~pf/analise_de_algoritmos/aulas/dijkstra.html) e [aqui](https://www.freecodecamp.org/news/dijkstras-shortest-path-algorithm-visual-introduction/)) em um grafo não-direcionado, com pesos nas arestas, com listas de
+Dijkstra (ver [aqui](https://www.ime.usp.br/~pf/analise_de_algoritmos/aulas/dijkstra.html) e [aqui](https://www.freecodecamp.org/news/dijkstras-shortest-path-algorithm-visual-introduction/)) em um grafo não-direcionado, com pesos nas arestas e com listas de
 adjacência. Foram desenvolvidas funções para verificação com TDD(Test Driven Development) com o framework C++ [Catch2](https://github.com/catchorg/Catch2/tree/v2.x).
 ```
 $ g++ -Wall -std=c++11 dijkstra.cpp  
