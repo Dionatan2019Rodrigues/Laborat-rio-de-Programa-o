@@ -118,10 +118,36 @@ struct Grafo {
   }
 
   void dijkstra(const int fonte) {
-    /*
-     * TODO
-     * Completar esta funcao!!!!
-     */
+    // inicializa todos vertices do grafo G com chave infinita
+    for(auto & i : grafo){
+      i.second.chave = std::numeric_limits<float>::max();
+    }
+    //cria heap mínimo H
+    auto compara = [](Vertice* v1, Vertice* v2) {return v1->chave > v2->chave;};
+    Heap<Vertice*, decltype(compara)> heap(compara);
+    //inicia chave da fonte com valor 0
+    grafo[fonte].chave = 0;
+    //insere todos os vértices de G no heap 
+    for(auto &i:grafo){
+      //std::cout << i.second.info << "Inserindo " << std::endl;
+      heap.insere(&(i.second));
+    }
+
+    heap.atualiza();
+
+    while(!heap.vazio()){
+      auto u = heap.topo();
+      heap.remove();
+      for(auto i : u->arestas){  
+        
+        if((u->chave + i.peso) < (grafo[i.v].chave)){
+          grafo[i.v].anterior = u->info;
+        
+          grafo[i.v].chave = u->chave + i.peso;
+          heap.atualiza();
+        }
+      }
+    }
   }
   
   void imprime(void){
@@ -136,19 +162,28 @@ struct Grafo {
 
   // essa versao imprime o caminho mínimo
   bool caminhoMinimo(int u, int v){
+    //std::cout << "ola" << std::endl;
+
+    if(grafo.count(u) == 0 || grafo.count(v) == 0){
+      return false;
+    }
+
+
     if(u == v){
       std::cout << grafo[u].info << " ";
       return true;
     }
-
-    if(grafo.empty() == true)
+    
+    if(grafo.empty() == true){
+      //std::cout << "ola02" << std::endl;    
         return false;
+      }
 
     if(grafo[v].anterior == -1){
       std::cout << "ERRO: caminho nao existe!" << std::endl;
       return false;
     } 
-    
+    //std::cout << "ol04s" << std::endl;
     caminhoMinimo( u, grafo[v].anterior );
     std::cout << grafo[v].info << " ";
     return true;
