@@ -3,6 +3,9 @@
 ## 1º Semestre (2022)
 Trabalhos desenvolvidos em Linguagem C.
 - `T1` A partir de 3 dados a respeito de um triângulo (ângulos e comprimentos dos lados), calcula os 3 dados restantes e imprime.
+```
+$ gcc arquivo.c   $ ./a.out 
+```
 - `T2` Jogo da velha disputado entre dois jogadores, com arquivo para guardar placar e tela gráfica em allegro.
 ```
 $ gcc -Wall -o exemplo exemplo.c tela.c -lallegro_font -lallegro_color -lallegro_ttf -lallegro_primitives -lallegro 
